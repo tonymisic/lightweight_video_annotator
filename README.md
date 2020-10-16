@@ -34,8 +34,6 @@ $ pip install <library>
 ```
 ## Using the GUI
 Traversing frames:
-![](gifs/traverse.gif)
-Set current frame as key frame:
-![](gifs/set.gif)
-Saving video annotation:
-![](gifs/save.gif)
+![](gifs/traverse.mov)
+Set current frame as key frame and saving:
+![](gifs/set.mov)
