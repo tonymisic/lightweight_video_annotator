@@ -62,6 +62,7 @@ def create_button_set(anno):
     button = tk.Button(root, text='Set',command=lambda *args: set_anno(frame))
     button.pack(in_=top, side=tk.TOP)
     return frame
+
 # annotation information
 fil = open('annotations.txt', 'r') # this needs to be downloaded
 annotations = []
@@ -87,11 +88,29 @@ def changeFrame(change):
     global clip
     global canvas
     global image_on_canvas
+    global slider
     if current_frame + change < len(clip) and current_frame + change >= 0:
         current_frame += change
     img = ImageTk.PhotoImage(image=Image.fromarray(clip[current_frame]))
     canvas.itemconfig(image_on_canvas, anchor="n", image=img)
     change_text()
+    slider.set(current_frame)
+
+
+def updateFrame(value):
+    global current_frame
+    global img
+    global clip
+    global canvas
+    global image_on_canvas
+    global slider
+    img = ImageTk.PhotoImage(image=Image.fromarray(clip[int(value)]))
+    current_frame = int(value)
+    canvas.itemconfig(image_on_canvas, anchor="n", image=img)
+    change_text()
+
+slider = tk.Scale(root, from_=0, to=len(clip)-1, length=400, orient=tk.HORIZONTAL, command=updateFrame)
+slider.pack()
 
 def changeFile():
     global current_frame
@@ -101,6 +120,7 @@ def changeFile():
     global clip
     global key_frames
     global label
+    global slider
     f = open("video_annos.txt", 'a')
     temp = ','.join([ files[current_video].split('/')[2], label, ','.join([str(key["text"]) for key in key_frames])]) + '\n'
     f.write(temp)
@@ -113,18 +133,23 @@ def changeFile():
         save.write(str(current_video))
         save.close()
     clip = get_frames(files[current_video])
+    slider.configure(to=len(clip) - 1)
+    slider.set(0)
     changeFrame(0)
     change_text()
-    
-    
 
+
+
+tk.Button(root, text='-1000',command=lambda *args: changeFrame(-1000)).pack(in_=bottom, side=tk.LEFT)
 tk.Button(root, text='-100',command=lambda *args: changeFrame(-100)).pack(in_=bottom, side=tk.LEFT)
 tk.Button(root, text='-10',command=lambda *args: changeFrame(-10)).pack(in_=bottom, side=tk.LEFT)
 tk.Button(root, text='-1',command=lambda *args: changeFrame(-1)).pack(in_=bottom, side=tk.LEFT)
 tk.Button(root, text='+1',command=lambda *args: changeFrame(1)).pack(in_=bottom, side=tk.LEFT)
 tk.Button(root, text='+10',command=lambda *args: changeFrame(10)).pack(in_=bottom, side=tk.LEFT)
 tk.Button(root, text='+100',command=lambda *args: changeFrame(100)).pack(in_=bottom, side=tk.LEFT)
+tk.Button(root, text='+1000',command=lambda *args: changeFrame(1000)).pack(in_=bottom, side=tk.LEFT)
 
 tk.Button(root, text='Finish',command=lambda *args: changeFile()).pack(in_=bottom, side=tk.LEFT)
+
 # END
 root.mainloop()
