@@ -34,6 +34,6 @@ $ pip install <library>
 ```
 ## Using the GUI
 Traversing frames:
-![](gifs/traverse.mov)
+![](traverse.mov)
 Set current frame as key frame and saving:
-![](gifs/set.mov)
+![](set.mov)
