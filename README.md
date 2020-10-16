@@ -34,6 +34,10 @@ $ pip install <library>
 ```
 ## Using the GUI
 Traversing frames:
-![](traverse.mov)
+<video width="1000" height="600" controls>
+  <source src="traverse.mov" type="video/mp4">
+</video>
 Set current frame as key frame and saving:
-![](set.mov)
+<video width="320" height="240" controls>
+  <source src="set.mov" type="video/mp4">
+</video>
