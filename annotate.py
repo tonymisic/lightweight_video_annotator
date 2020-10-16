@@ -1,4 +1,4 @@
-import cv2, os
+import cv2, os, json
 import tkinter as tk
 import numpy as np
 from PIL import Image, ImageTk
@@ -16,10 +16,13 @@ def get_frames(video_file):
         return frames
     return frames
 
-def get_files(folder):
+def get_files(folder, label):
+    temp = open('./penn_annotations.json')
+    mapping = json.load(temp) # make sure it's named this
     result = []
     for f in os.listdir(folder):
-        result.append(folder + "/" + f)
+        if mapping[str(f.split('.')[0])]["action"] == label:
+            result.append(folder + "/" + f)
     return result
 
 # globals
@@ -27,8 +30,8 @@ current_frame, current_video = 0, 0
 save = open("save", 'r')
 current_video = int(save.readline())
 save.close()
-files = get_files('./videos') #change this
 label = "Baseball Pitch" # change this
+files = get_files('./videos', label) #change this
 clip = get_frames(files[current_video])
 # START
 root = tk.Tk()
@@ -67,7 +70,8 @@ def create_button_set(anno):
 fil = open('annotations.txt', 'r') # this needs to be downloaded
 annotations = []
 for line in fil.readlines():
-    annotations = line.split(',')
+    if label in line:
+        annotations = line.split(',')[1:]
 key_frames = []
 for i, anno in enumerate(annotations, 0):
     f = create_button_set(anno)
@@ -95,7 +99,6 @@ def changeFrame(change):
     canvas.itemconfig(image_on_canvas, anchor="n", image=img)
     change_text()
     slider.set(current_frame)
-
 
 def updateFrame(value):
     global current_frame

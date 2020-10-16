@@ -1,0 +1,4 @@
+{
+    "1363": {"action": "pushup", "n_frames": 40, "split": "validation"}, 
+    "0781": {"action": "clean_and_jerk", "n_frames": 332, "split": "train"}
+}
