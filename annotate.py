@@ -17,7 +17,7 @@ def get_frames(video_file):
     return frames
 
 def get_files(folder, label):
-    temp = open('./penn_annotations.json')
+    temp = open('penn_annotations.json')
     mapping = json.load(temp) # make sure it's named this
     result = []
     for f in os.listdir(folder):
@@ -30,7 +30,7 @@ current_frame, current_video = 0, 0
 save = open("save", 'r')
 current_video = int(save.readline())
 save.close()
-label = "Baseball Pitch" # change this
+label = "baseball_pitch" # change this
 files = get_files('./videos', label) #change this
 clip = get_frames(files[current_video])
 # START

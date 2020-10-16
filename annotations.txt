@@ -1,2 +1,14 @@
 baseball_pitch,Knee Fully Up,Arm fully stretched out,Ball Release
-
+baseball_swing,Bat swung back fully,Bat hits ball
+bench_press,Bar fully down
+bowling,Ball swung fully back,Ball release
+clean_and_jerk,Bar at hip,Fully squatting,Standing,Begin Thrusting,Beginning Balance 
+golf_swing,Stick swung fully back,Stick hits ball
+jumping_jacks,Hands at shoulder (going up),Hands above head,Hands at shoulders (going down) 
+pullups,Chin above bar
+pushups,Head at floor
+situps,Abs fully crunched
+squats,Hips at knees (going down),Hips at floor,Hips at knee (going up)
+tennis_forehand,Racket swung fully back,Racket touches ball
+tennis_serve,Ball released from hand,Racket swung fully back,Ball touches racket
+pouring,Hand touches bottle,Liquid starts exiting,Pouring complete,Bottle back on table

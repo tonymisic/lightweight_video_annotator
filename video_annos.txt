@@ -1,3 +1,1 @@
-Chaotic_motion_g1_c1.mp4,Baseball Pitch,0,0,0
-Scintillation_g2_c22.mp4,Baseball Pitch,198,295,0
-Chaotic_motion_g1_c1.mp4,Baseball Pitch,73,113,147
+
