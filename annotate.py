@@ -95,7 +95,7 @@ def changeFrame(change):
     global slider
     if current_frame + change < len(clip) and current_frame + change >= 0:
         current_frame += change
-    img = ImageTk.PhotoImage(image=Image.fromarray(clip[current_frame]))
+    img = ImageTk.PhotoImage(image=Image.fromarray(clip[current_frame][:,:,::-1]))
     canvas.itemconfig(image_on_canvas, anchor="n", image=img)
     change_text()
     slider.set(current_frame)
@@ -107,7 +107,7 @@ def updateFrame(value):
     global canvas
     global image_on_canvas
     global slider
-    img = ImageTk.PhotoImage(image=Image.fromarray(clip[int(value)]))
+    img = ImageTk.PhotoImage(image=Image.fromarray(clip[int(value)][:,:,::-1]))
     current_frame = int(value)
     canvas.itemconfig(image_on_canvas, anchor="n", image=img)
     change_text()
