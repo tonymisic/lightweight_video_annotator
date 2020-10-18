@@ -41,7 +41,7 @@ bottom = tk.Frame(root)
 top.pack(side=tk.TOP)
 bottom.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
 # load first image
-img = ImageTk.PhotoImage(image=Image.fromarray(clip[current_frame]))
+img = ImageTk.PhotoImage(image=Image.fromarray(clip[current_frame][:,:,::-1]))
 canvas = tk.Canvas(root,width=700,height=700)
 canvas.pack(in_=top, side=tk.LEFT, fill=tk.BOTH, expand=True)
 image_on_canvas = canvas.create_image(200,20, anchor="n", image=img)
